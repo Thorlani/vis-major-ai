@@ -1,0 +1,26 @@
+# AI Web App
+
+A web application powered by AI algorithms to enhance productivity, and unlock new levels of efficiency.
+
+## Installation Instructions
+
+1. Clone the repository.
+2. Install dependencies by running `yarn add`.
+3. Set up the required environment variables [if applicable].
+4. Start the development server using `yarn start`.
+
+## Usage
+
+Seemlessly easy to use.
+Firstly, click on "get start" which would take you to the home page.
+From there use the input field to perform a request.
+[Provide detailed instructions on how to use your web app. Explain its features, user interactions, and any input/output mechanisms. You can include screenshots or gifs to demonstrate the app's functionality.]
+
+## Technologies Used
+
+- React
+- TypeScript
+- Axios,
+- Picocss/pico
+- Tanstack/react-query
+
