@@ -63,7 +63,7 @@ const Main = () => {
         >
           Back
         </div>
-        <h1>Vis Major</h1>
+        <h1 data-testid="title">Vis Major</h1>
         <TypingAnimation
           text="Welcome to a new era of AI-powered innovation."
           typingDelay={40}

@@ -11,7 +11,9 @@ import {
 } from "react-router-dom";
 import Main from "./Main";
 import Intro from "./Intro";
-import Footer from "./components/footer";
+import { inject } from "@vercel/analytics";
+
+inject();
 
 const Root = () => {
   return (
