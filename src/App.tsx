@@ -8,12 +8,13 @@ import {
   Route,
   Outlet,
   RouterProvider,
+  useLocation,
 } from "react-router-dom";
 import Main from "./Main";
 import Intro from "./Intro";
-import { inject } from "@vercel/analytics";
+// import { inject } from "@vercel/analytics";
 
-inject();
+// inject();
 
 const Root = () => {
   return (

@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import TypingAnimation from "./components/typingAnimation";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import Footer from "./components/footer";
+import axios from "axios";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -12,34 +13,28 @@ const Main = () => {
   const [inputChecker, setInputChecker] = useState<boolean>(false);
 
   const options = {
-    method: "POST",
+    method: "GET",
     url: `${process.env.REACT_APP_RAPID_API_URL}`,
+    params: {
+      question: questions,
+    },
     headers: {
-      "content-type": "application/json",
       "X-RapidAPI-Key": `${process.env.REACT_APP_RAPID_API_KEY}`,
       "X-RapidAPI-Host": `${process.env.REACT_APP_RAPID_API_HOST}`,
-    },
-    data: {
-      messages: [
-        {
-          role: "user",
-          content: questions,
-        },
-      ],
-      temperature: 1,
     },
   };
 
   const getData = async () => {
     try {
-      const response = await axios.request(options);
-      return response;
+      const response = await axios(options);
+      const result = response.data;
+      return result;
     } catch (error) {
       console.error(error);
     }
   };
 
-  const { mutate, isLoading, isSuccess, isError, data } = useMutation(getData);
+  const { mutate, isLoading, isSuccess, data } = useMutation(getData);
   const handleSubmit: any = (event: {
     preventDefault: () => void;
     target: HTMLFormElement | undefined;
@@ -90,10 +85,7 @@ const Main = () => {
           ) : (
             <>
               {isSuccess ? (
-                <TypingAnimation
-                  text={data?.data?.choices[0]?.message?.content}
-                  typingDelay={40}
-                />
+                <TypingAnimation text={data?.answer} typingDelay={40} />
               ) : null}
             </>
           )}
