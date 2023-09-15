@@ -6,22 +6,39 @@ import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import Footer from "./components/footer";
 import axios from "axios";
+import { log } from "console";
 
 const Main = () => {
   const navigate = useNavigate();
   const [questions, setQuestions] = useState<string>();
   const [inputChecker, setInputChecker] = useState<boolean>(false);
 
+  // const options = {
+  //   method: "GET",
+  //   url: `${process.env.REACT_APP_RAPID_API_URL}`,
+  //   params: {
+  //     question: questions,
+  //   },
+  //   headers: {
+  //     "X-RapidAPI-Key": `${process.env.REACT_APP_RAPID_API_KEY}`,
+  //     "X-RapidAPI-Host": `${process.env.REACT_APP_RAPID_API_HOST}`,
+  //   },
+  // };
+
   const options = {
-    method: "GET",
+    method: "POST",
     url: `${process.env.REACT_APP_RAPID_API_URL}`,
-    params: {
-      question: questions,
-    },
     headers: {
+      "content-type": "application/json",
       "X-RapidAPI-Key": `${process.env.REACT_APP_RAPID_API_KEY}`,
       "X-RapidAPI-Host": `${process.env.REACT_APP_RAPID_API_HOST}`,
     },
+    data: [
+      {
+        content: questions,
+        role: "user",
+      },
+    ],
   };
 
   const getData = async () => {
@@ -85,7 +102,7 @@ const Main = () => {
           ) : (
             <>
               {isSuccess ? (
-                <TypingAnimation text={data?.answer} typingDelay={40} />
+                <TypingAnimation text={data?.text} typingDelay={40} />
               ) : null}
             </>
           )}
