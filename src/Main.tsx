@@ -13,17 +13,7 @@ const Main = () => {
   const [questions, setQuestions] = useState<string>();
   const [inputChecker, setInputChecker] = useState<boolean>(false);
 
-  // const options = {
-  //   method: "GET",
-  //   url: `${process.env.REACT_APP_RAPID_API_URL}`,
-  //   params: {
-  //     question: questions,
-  //   },
-  //   headers: {
-  //     "X-RapidAPI-Key": `${process.env.REACT_APP_RAPID_API_KEY}`,
-  //     "X-RapidAPI-Host": `${process.env.REACT_APP_RAPID_API_HOST}`,
-  //   },
-  // };
+  
 
   const options = {
     method: "POST",
